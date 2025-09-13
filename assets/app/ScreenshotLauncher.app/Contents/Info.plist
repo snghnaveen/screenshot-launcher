@@ -6,7 +6,7 @@
     <key>CFBundleExecutable</key>
     <string>ScreenshotLauncher</string>
     <key>CFBundleIdentifier</key>
-    <string>com.example.ScreenshotLauncher</string>
+    <string>io.github.snghnaveen.ScreenshotLauncher</string>
     <key>CFBundleName</key>
     <string>ScreenshotLauncher</string>
     <key>LSUIElement</key>

@@ -30,7 +30,7 @@ echo "🔧 Setting executable permissions..."
 chmod +x "$BUNDLE_NAME/Contents/MacOS/$APP_NAME"
 
 echo "🗜️ Creating zip archive..."
-(cd "$OUTPUT_DIR" && zip -r "../../$ZIP_NAME" "$APP_NAME.app")
+(cd "$OUTPUT_DIR" && zip -r -q "../../$ZIP_NAME" "$APP_NAME.app")
 
 echo "📀 Creating DMG with Applications shortcut..."
 rm -rf "$DMG_TEMP"
