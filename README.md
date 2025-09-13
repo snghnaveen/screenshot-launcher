@@ -19,7 +19,7 @@
 
 You can either build the app yourself or download a prebuilt version:
 
-### Option 1: Build from source (optional)
+### Option 1: Build from source
 1. Clone the repository:
     ```bash
     git clone https://github.com/snghnaveen/screenshot-launcher.git
@@ -35,11 +35,12 @@ You can either build the app yourself or download a prebuilt version:
     ```
 4. Open the app by double-clicking it, or move it to the Applications folder if you want it available system-wide.
 
-### Option 2: Download prebuilt ZIP or DMG
-Download the latest release from the repository:
+### Option 2: Download prebuilt ZIP or DMG [Apple Silicon]
+Download the latest release of **ScreenshotLauncher** from the repository. 
+> ⚠️ This prebuilt version is built for Apple Silicon Macs and will not run on Intel-based Macs:
 
-[Download ScreenshotLauncher.zip](ScreenshotLauncher.zip)
-[Download ScreenshotLauncher.dmg](ScreenshotLauncher.dmg)
+- [Download ScreenshotLauncher.zip](ScreenshotLauncher.zip)
+- [Download ScreenshotLauncher.dmg](ScreenshotLauncher.dmg)
 
 > After downloading, either unzip the `.zip` file or open the `.dmg`, then move `ScreenshotLauncher.app` to your Applications folder or run it directly.
 
