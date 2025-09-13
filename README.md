@@ -35,12 +35,13 @@ You can either build the app yourself or download a prebuilt version:
     ```
 4. Open the app by double-clicking it, or move it to the Applications folder if you want it available system-wide.
 
-### Option 2: Download prebuilt ZIP
+### Option 2: Download prebuilt ZIP or DMG
 Download the latest release from the repository:
 
 [Download ScreenshotLauncher.zip](ScreenshotLauncher.zip)
+[Download ScreenshotLauncher.dmg](ScreenshotLauncher.dmg)
 
-> After downloading, unzip the file and move `ScreenshotLauncher.app` to your Applications folder or run it directly.
+> After downloading, either unzip the `.zip` file or open the `.dmg`, then move `ScreenshotLauncher.app` to your Applications folder or run it directly.
 
 ---
 
