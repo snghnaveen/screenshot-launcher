@@ -1,0 +1,30 @@
+# Build artifacts
+.build/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails and Icon caches
+Icon?
+._*
+
+# Swift Package Manager
+Packages/
+.swiftpm/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Backup files
+*~
+*.swp
+*.swo
+
+#vscode settings
+.vscode/
