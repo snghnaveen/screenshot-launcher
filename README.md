@@ -17,23 +17,32 @@
 
 ## Installation
 
+You can either build the app yourself or download a prebuilt version:
+
+### Option 1: Build from source (optional)
 1. Clone the repository:
     ```bash
     git clone https://github.com/snghnaveen/screenshot-launcher.git
     cd screenshot-launcher
     ```
-
 2. Build the app using the included script:
     ```bash
     ./build.sh
     ```
-
-3. The .app bundle will be generated in:
+3. The `.app` bundle will be generated in:
     ```bash
     assets/app/ScreenshotLauncher.app
     ```
-
 4. Open the app by double-clicking it, or move it to the Applications folder if you want it available system-wide.
+
+### Option 2: Download prebuilt ZIP
+Download the latest release from the repository:
+
+[Download ScreenshotLauncher.zip](ScreenshotLauncher.zip)
+
+> After downloading, unzip the file and move `ScreenshotLauncher.app` to your Applications folder or run it directly.
+
+---
 
 ### Usage
 - Left-Click: Opens the macOS Screenshot utility.

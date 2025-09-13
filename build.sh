@@ -10,6 +10,8 @@ echo "🧹 Cleaning previous builds..."
 rm -rf .build || true
 rm -rf "$BUNDLE_NAME" || true
 
+ZIP_NAME="$APP_NAME.zip"
+
 echo "🔨 Building the executable in release mode..."
 swift build -c release
 
@@ -30,4 +32,10 @@ cp "ScreenshotLauncherIcon.icns" "$BUNDLE_NAME/Contents/Resources/"
 echo "🔧 Setting executable permissions..."
 chmod +x "$BUNDLE_NAME/Contents/MacOS/$APP_NAME"
 
-echo "✅ Build complete: $BUNDLE_NAME"
+echo "🗜️ Creating zip archive containing only the .app bundle..."
+# Go into the app output folder and zip the app itself
+(cd "$OUTPUT_DIR" && zip -r "../../$ZIP_NAME" "$APP_NAME.app")
+
+echo "✅ Build complete!"
+echo "App bundle: $BUNDLE_NAME"
+echo "Zip archive: $ZIP_NAME"
