@@ -13,7 +13,7 @@
 - **Quick Screenshot Access**: 
   - Left-click the icon to instantly open `/System/Applications/Utilities/Screenshot.app`. 
   - Right-click to open the context menu option (Open Screenshot Now, Open in 5s, Open in 10s, Open in 15s, Quit)
-- ***Dynamic Countdown:** When you pick a delayed option, the menu item updates every second (e.g., “Opening Screenshot in 14s…”). If a new delay is chosen, the previous countdown is canceled and replaced.
+- **Dynamic Countdown:** When you pick a delayed option, the menu item updates every second (e.g., “Opening Screenshot in 14s…”). If a new delay is chosen, the previous countdown is canceled and replaced.
 - **Context Menu**: Right-click the icon to show a menu with a “Quit” option.  
 - **Lightweight**: Runs without a dock icon, keeping your workflow clean.  
 
@@ -43,8 +43,9 @@ You can either build the app yourself or download a prebuilt version:
 Download the latest release of **ScreenshotLauncher** from the repository. 
 > ⚠️ This prebuilt version is built for Apple Silicon Macs and will not run on Intel-based Macs:
 
-- [Download ScreenshotLauncher.zip](ScreenshotLauncher.zip)
-- [Download ScreenshotLauncher.dmg](ScreenshotLauncher.dmg)
+- [Download ScreenshotLauncher.zip](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/ScreenshotLauncher.zip)
+- [Download ScreenshotLauncher.dmg](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/ScreenshotLauncher.dmg)
+
 
 > After downloading, either unzip the `.zip` file or open the `.dmg`, then move `ScreenshotLauncher.app` to your Applications folder or run it directly.
 
