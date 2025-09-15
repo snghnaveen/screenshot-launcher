@@ -1,15 +1,19 @@
 # ScreenshotLauncher
 
-**ScreenshotLauncher** is a lightweight macOS menu bar app that provides quick access to the built-in Screenshot utility. It runs as a status bar item and allows you to open the Screenshot app with a single click.  
+**ScreenshotLauncher** is a lightweight macOS menu bar app that provides quick access to the built-in Screenshot utility. It runs as a status bar item and allows you to open the Screenshot app instantly or with a configurable delay.
 
 ![Screen](assets/screen.gif)  
 
+![Right Click Menu](assets/right-click-menu.png)
 ---
 
 ## Features
 
 - **Status Bar Icon**: Appears in the macOS menu bar with a camera icon.  
-- **Quick Screenshot Access**: Left-clicking the icon opens `/System/Applications/Utilities/Screenshot.app`.  
+- **Quick Screenshot Access**: 
+  - Left-click the icon to instantly open `/System/Applications/Utilities/Screenshot.app`. 
+  - Right-click to open the context menu option (Open Screenshot Now, Open in 5s, Open in 10s, Open in 15s, Quit)
+- ***Dynamic Countdown:** When you pick a delayed option, the menu item updates every second (e.g., “Opening Screenshot in 14s…”). If a new delay is chosen, the previous countdown is canceled and replaced.
 - **Context Menu**: Right-click the icon to show a menu with a “Quit” option.  
 - **Lightweight**: Runs without a dock icon, keeping your workflow clean.  
 
@@ -43,12 +47,6 @@ Download the latest release of **ScreenshotLauncher** from the repository.
 - [Download ScreenshotLauncher.dmg](ScreenshotLauncher.dmg)
 
 > After downloading, either unzip the `.zip` file or open the `.dmg`, then move `ScreenshotLauncher.app` to your Applications folder or run it directly.
-
----
-
-### Usage
-- Left-Click: Opens the macOS Screenshot utility.
-- Right-Click: Opens the menu with option “Quit”.
 
 ---
 
