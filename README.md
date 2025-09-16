@@ -35,17 +35,26 @@ You can either build the app yourself or download a prebuilt version:
     ```
 3. The `.app` bundle will be generated in:
     ```bash
-    assets/app/ScreenshotLauncher.app
+    .build/app/{arch}/ScreenshotLauncher.app
     ```
 4. Open the app by double-clicking it, or move it to the Applications folder if you want it available system-wide.
 
-### Option 2: Download prebuilt ZIP or DMG [Apple Silicon]
-Download the latest release of **ScreenshotLauncher** from the repository. 
-> ⚠️ This prebuilt version is built for Apple Silicon Macs and will not run on Intel-based Macs:
+### Option 2: Download Prebuilt ZIP or DMG
 
-- [Download ScreenshotLauncher.zip](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/ScreenshotLauncher.zip)
-- [Download ScreenshotLauncher.dmg](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/ScreenshotLauncher.dmg)
+Download the latest release of **ScreenshotLauncher** for your architecture:
 
+####  Apple Silicon (arm)
+- [Download ScreenshotLauncher-arm64.dmg](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/dist/ScreenshotLauncher-arm64.dmg)
+- [Download ScreenshotLauncher-arm64.zip](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/dist/ScreenshotLauncher-arm64.zip)
+---
+#### 🖥️ Intel Chip (x86_64)
+- [Download ScreenshotLauncher-x86_64.dmg](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/dist/ScreenshotLauncher-x86_64.dmg)
+- [Download ScreenshotLauncher-x86_64.zip](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/dist/ScreenshotLauncher-x86_64.zip)
+---
+#### 🌐 Universal (Apple + Intel in one)
+- [Download ScreenshotLauncher-universal.dmg](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/dist/ScreenshotLauncher-universal.dmg)
+- [Download ScreenshotLauncher-universal.zip](https://github.com/snghnaveen/screenshot-launcher/raw/refs/heads/main/dist/ScreenshotLauncher-universal.zip)
+---
 
 > After downloading, either unzip the `.zip` file or open the `.dmg`, then move `ScreenshotLauncher.app` to your Applications folder or run it directly.
 

@@ -2,51 +2,76 @@
 set -e
 
 APP_NAME="ScreenshotLauncher"
-OUTPUT_DIR="assets/app"
-BUNDLE_NAME="$OUTPUT_DIR/$APP_NAME.app"
+OUTPUT_DIR=".build/app"
+UNIVERSAL_DIR=".build/universal"
+DMG_TEMP=".build/dmg_temp"
+DIST_DIR="dist"
 
 echo "🧹 Cleaning previous builds..."
-# Clean build folder and previous app bundle
 rm -rf .build || true
-rm -rf "$BUNDLE_NAME" || true
+rm -rf "$OUTPUT_DIR" || true
+rm -rf "$DMG_TEMP" || true
+rm -rf "$DIST_DIR" || true
+mkdir -p "$OUTPUT_DIR"
+mkdir -p "$UNIVERSAL_DIR"
+mkdir -p "$DIST_DIR"
 
-ZIP_NAME="$APP_NAME.zip"
-DMG_NAME="$APP_NAME.dmg"
-DMG_TEMP="./build/dmg_temp"
+# --- Build for both architectures ---
+echo "🔨 Building for arm64..."
+swift build -c release --arch arm64
 
-echo "🔨 Building the executable in release mode..."
-swift build -c release
+echo "🔨 Building for x86_64..."
+swift build -c release --arch x86_64
 
-echo "📦 Creating app bundle structure..."
-mkdir -p "$BUNDLE_NAME/Contents/MacOS"
-mkdir -p "$BUNDLE_NAME/Contents/Resources"
+# --- Create universal binary ---
+echo "🧩 Creating universal binary with lipo..."
+lipo -create \
+    .build/arm64-apple-macosx/release/$APP_NAME \
+    .build/x86_64-apple-macosx/release/$APP_NAME \
+    -output "$UNIVERSAL_DIR/$APP_NAME"
 
-echo "📂 Copying files..."
-cp ".build/release/$APP_NAME" "$BUNDLE_NAME/Contents/MacOS/"
-cp "Info.plist" "$BUNDLE_NAME/Contents/"
-cp "ScreenshotLauncherIcon.icns" "$BUNDLE_NAME/Contents/Resources/"
+# Function to package app into .app, .zip, .dmg
+package_app() {
+    local ARCH=$1
+    local BINARY=$2
+    local ARCH_OUTPUT="$OUTPUT_DIR/$ARCH"
+    local BUNDLE_NAME="$ARCH_OUTPUT/$APP_NAME.app"
 
-echo "🔧 Setting executable permissions..."
-chmod +x "$BUNDLE_NAME/Contents/MacOS/$APP_NAME"
+    echo "📦 Creating $ARCH app bundle..."
+    mkdir -p "$BUNDLE_NAME/Contents/MacOS"
+    mkdir -p "$BUNDLE_NAME/Contents/Resources"
 
-echo "🗜️ Creating zip archive..."
-(cd "$OUTPUT_DIR" && zip -r -q "../../$ZIP_NAME" "$APP_NAME.app")
+    cp "$BINARY" "$BUNDLE_NAME/Contents/MacOS/$APP_NAME"
+    cp "Info.plist" "$BUNDLE_NAME/Contents/"
+    cp "ScreenshotLauncherIcon.icns" "$BUNDLE_NAME/Contents/Resources/"
+    chmod +x "$BUNDLE_NAME/Contents/MacOS/$APP_NAME"
 
-echo "📀 Creating DMG with Applications shortcut..."
-rm -rf "$DMG_TEMP"
-mkdir -p "$DMG_TEMP"
-cp -R "$BUNDLE_NAME" "$DMG_TEMP/"
+    # Create zip
+    ZIP_NAME="$APP_NAME-$ARCH.zip"
+    echo "🗜️ Creating $ZIP_NAME..."
+    (cd "$ARCH_OUTPUT" && zip -r -q "../../../$DIST_DIR/$ZIP_NAME" "$APP_NAME.app")
 
-# Add Applications shortcut for drag-and-drop
-ln -s /Applications "$DMG_TEMP/Applications"
+    # Create dmg
+    DMG_NAME="$APP_NAME-$ARCH.dmg"
+    echo "📀 Creating $DMG_NAME..."
+    rm -rf "$DMG_TEMP"
+    mkdir -p "$DMG_TEMP"
+    cp -R "$BUNDLE_NAME" "$DMG_TEMP/"
+    ln -s /Applications "$DMG_TEMP/Applications"
 
-# Create compressed DMG (UDZO)
-hdiutil create -volname "$APP_NAME" -srcfolder "$DMG_TEMP" -ov -format UDZO "$DMG_NAME"
+    hdiutil create -volname "$APP_NAME" -srcfolder "$DMG_TEMP" -ov -format UDZO "$DIST_DIR/$DMG_NAME"
 
-# Cleanup
-rm -rf "$DMG_TEMP"
+    rm -rf "$DMG_TEMP"
 
-echo "✅ Build complete!"
-echo "App bundle: $BUNDLE_NAME"
-echo "Zip archive: $ZIP_NAME"
-echo "DMG: $DMG_NAME"
+    echo "✅ $ARCH build complete: $BUNDLE_NAME"
+    echo "   ├─ ZIP: $DIST_DIR/$ZIP_NAME"
+    echo "   └─ DMG: $DIST_DIR/$DMG_NAME"
+}
+
+# --- Package for each architecture ---
+package_app "arm64" ".build/arm64-apple-macosx/release/$APP_NAME"
+package_app "x86_64" ".build/x86_64-apple-macosx/release/$APP_NAME"
+package_app "universal" "$UNIVERSAL_DIR/$APP_NAME"
+
+echo "🎉 All builds complete!"
+echo "📦 Distributables located in: $DIST_DIR/"
