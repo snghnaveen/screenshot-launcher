@@ -21,25 +21,9 @@
 
 ## Installation
 
-You can either build the app yourself or download a prebuilt version:
+You can either download a prebuilt version or build the app yourself :
 
-### Option 1: Build from source
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/snghnaveen/screenshot-launcher.git
-    cd screenshot-launcher
-    ```
-2. Build the app using the included script:
-    ```bash
-    ./build.sh
-    ```
-3. The `.app` bundle will be generated in:
-    ```bash
-    .build/app/{arch}/ScreenshotLauncher.app
-    ```
-4. Open the app by double-clicking it, or move it to the Applications folder if you want it available system-wide.
-
-### Option 2: Download Prebuilt ZIP or DMG
+### Option 1: Download Prebuilt ZIP or DMG
 
 Download the latest release of **ScreenshotLauncher** for your architecture:
 
@@ -58,7 +42,26 @@ Download the latest release of **ScreenshotLauncher** for your architecture:
 
 > After downloading, either unzip the `.zip` file or open the `.dmg`, then move `ScreenshotLauncher.app` to your Applications folder or run it directly.
 
+> When you first open ScreenshotLauncher, macOS may warn that it’s from an unidentified developer. 
+This is normal for apps downloaded outside the App Store. To open it, follow Apple’s official instructions here: [Open a Mac app from an unknown developer](https://support.apple.com/en-in/guide/mac-help/mh40616/26/mac/26)
+
 ---
+
+### Option 2: Build from source
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/snghnaveen/screenshot-launcher.git
+    cd screenshot-launcher
+    ```
+2. Build the app using the included script:
+    ```bash
+    ./build.sh
+    ```
+3. The `.app` bundle will be generated in:
+    ```bash
+    .build/app/{arch}/ScreenshotLauncher.app
+    ```
+4. Open the app by double-clicking it, or move it to the Applications folder if you want it available system-wide.
 
 ## Motivation
 
