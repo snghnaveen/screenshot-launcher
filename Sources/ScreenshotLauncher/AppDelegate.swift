@@ -9,6 +9,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // Keep references to items so we can reset
     var nowItem: NSMenuItem!
+    var twoSecItem: NSMenuItem!
     var fiveSecItem: NSMenuItem!
     var tenSecItem: NSMenuItem!
     var fifteenSecItem: NSMenuItem!
@@ -24,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create menu items
         nowItem = NSMenuItem(title: "Open Screenshot Now", action: #selector(openNow), keyEquivalent: "")
+        twoSecItem = NSMenuItem(title: "Open Screenshot in 2s", action: #selector(openIn2s), keyEquivalent: "")
         fiveSecItem = NSMenuItem(title: "Open Screenshot in 5s", action: #selector(openIn5s), keyEquivalent: "")
         tenSecItem = NSMenuItem(title: "Open Screenshot in 10s", action: #selector(openIn10s), keyEquivalent: "")
         fifteenSecItem = NSMenuItem(title: "Open Screenshot in 15s", action: #selector(openIn15s), keyEquivalent: "")
@@ -31,6 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Build menu
         menu = NSMenu()
         menu?.addItem(nowItem)
+        menu?.addItem(twoSecItem)
         menu?.addItem(fiveSecItem)
         menu?.addItem(tenSecItem)
         menu?.addItem(fifteenSecItem)
@@ -108,6 +111,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Menu actions
     @objc func openNow() {
         scheduleLaunch(after: 0, menuItem: nowItem)
+    }
+
+    @objc func openIn2s() {
+        scheduleLaunch(after: 2, menuItem: fiveSecItem)
     }
 
     @objc func openIn5s() {
